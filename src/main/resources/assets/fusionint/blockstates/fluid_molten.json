@@ -1,0 +1,44 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "forge:fluid"
+    },
+    "variants": {
+        "molten_adamantium": [
+            {
+                "custom": {
+                    "fluid": "adamantium"
+                }
+            }
+        ],
+		"molten_mythril": [
+            {
+                "custom": {
+                    "fluid": "mythril"
+                }
+            }
+        ],
+		"molten_onyx": [
+            {
+                "custom": {
+                    "fluid": "onyx"
+                }
+            }
+        ],
+		"molten_thyrium": [
+            {
+                "custom": {
+                    "fluid": "thyrium"
+                }
+            }
+        ],
+		"molten_sinisite": [
+            {
+                "custom": {
+                    "fluid": "sinisite"
+                }
+            }
+        ]
+		
+    }
+}
