@@ -12,6 +12,7 @@ import alexndr.plugins.SimpleOres.ModItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.smileycorp.fusionint.common.fluids.FusionFluids;
 import net.smileycorp.fusionint.common.fusion.FusionContent;
@@ -36,47 +37,46 @@ public class TConRegistry {
 	public static MaterialIntegration SINISITE_INT;
 
 	public static void registerMaterials() {
-		ADAMANTIUM = new Material("adamantium", 0xFF45B350);
-		ADAMANTIUM.addCommonItems("Adamantium");
-		
-		MYTHRIL = new Material("mythril", 0xFF459BF1);
-		MYTHRIL.addCommonItems("Mythril");
-		
-		
-		ONYX = new Material("onyx", 0xFF333333);
-		ONYX.addCommonItems("Onyx");
-		ONYX.addItem(ModItems.onyx_gem, 1, 1);
-		ONYX.addItem(ModBlocks.onyx_block, 9);
-		
-		THYRIUM = new Material("thyrium", 0xFF1A1A81);
-		THYRIUM.addCommonItems("Thyrium");
-		
-		
-		SINISITE = new Material("sinisite", 0xFF52AB94);
-		SINISITE.addCommonItems("Sinisite");
-		
-		
+		if (Loader.isModLoaded("simpleores")) {
+			ADAMANTIUM = new Material("adamantium", 0xFF45B350);
+			ADAMANTIUM.addCommonItems("Adamantium");
+			
+			MYTHRIL = new Material("mythril", 0xFF459BF1);
+			MYTHRIL.addCommonItems("Mythril");
+			MYTHRIL.addCommonItems("Mithril");
+			
+			
+			ONYX = new Material("onyx", 0xFF333333);
+			ONYX.addCommonItems("Onyx");
+			ONYX.addItem(ModItems.onyx_gem, 1, 1);
+			ONYX.addItem(ModBlocks.onyx_block, 9);
+			
+			THYRIUM = new Material("thyrium", 0xFF1A1A81);
+			THYRIUM.addCommonItems("Thyrium");
+			
+			
+			SINISITE = new Material("sinisite", 0xFF52AB94);
+			SINISITE.addCommonItems("Sinisite");
+		}	
 	}
 	
 	public static void registerSmeltery() {
-		//alloys
-		TinkerRegistry.registerAlloy(new FluidStack(FusionFluids.THYRIUM, 1), new FluidStack(FusionFluids.ADAMANTIUM, 1), new FluidStack(FusionFluids.MYTHRIL, 1));
-		
-		//melting chunks
-		TinkerRegistry.registerMelting(large_bronze_chunk, TinkerFluids.bronze, 288);
-		TinkerRegistry.registerMelting(large_steel_chunk, TinkerFluids.steel, 288);
-		TinkerRegistry.registerMelting(large_thyrium_chunk, FusionFluids.THYRIUM, 288);
-		TinkerRegistry.registerMelting(large_sinisite_chunk, FusionFluids.SINISITE, 288);
-		TinkerRegistry.registerMelting(new ItemStack(FusionContent.MANYULLYN, 1, 0), TinkerFluids.manyullyn, 288);
-		
-		//melting rods
-		TinkerRegistry.registerMelting(mythril_rod, FusionFluids.MYTHRIL, 288);
-		TinkerRegistry.registerMelting(thyrium_rod, FusionFluids.THYRIUM, 288);
-		TinkerRegistry.registerMelting(sinisite_rod, FusionFluids.SINISITE, 288);
-	}
-	
-	public static void registerTools() {
-		
+		if (Loader.isModLoaded("simpleores")) {
+			//alloys
+			TinkerRegistry.registerAlloy(new FluidStack(FusionFluids.THYRIUM, 1), new FluidStack(FusionFluids.ADAMANTIUM, 1), new FluidStack(FusionFluids.MYTHRIL, 1));
+			
+			//melting chunks
+			TinkerRegistry.registerMelting(large_bronze_chunk, TinkerFluids.bronze, 288);
+			TinkerRegistry.registerMelting(large_steel_chunk, TinkerFluids.steel, 288);
+			TinkerRegistry.registerMelting(large_thyrium_chunk, FusionFluids.THYRIUM, 288);
+			TinkerRegistry.registerMelting(large_sinisite_chunk, FusionFluids.SINISITE, 288);
+			TinkerRegistry.registerMelting(new ItemStack(FusionContent.MANYULLYN, 1, 0), TinkerFluids.manyullyn, 288);
+			
+			//melting rods
+			TinkerRegistry.registerMelting(mythril_rod, FusionFluids.MYTHRIL, 288);
+			TinkerRegistry.registerMelting(thyrium_rod, FusionFluids.THYRIUM, 288);
+			TinkerRegistry.registerMelting(sinisite_rod, FusionFluids.SINISITE, 288);
+		}
 	}
 
 	public static void registerIntergrations(IForgeRegistry<IRecipe> registry) {
@@ -85,6 +85,7 @@ public class TConRegistry {
 		ADAMANTIUM_INT.registerToolForgeRecipe(registry);
 		
 		MYTHRIL_INT=TinkerRegistry.integrate(MYTHRIL, FusionFluids.MYTHRIL, "Mythril");
+		MYTHRIL_INT=TinkerRegistry.integrate(MYTHRIL, FusionFluids.MYTHRIL, "Mithril");
 		MYTHRIL_INT.toolforge();
 		MYTHRIL_INT.registerToolForgeRecipe(registry);
 		

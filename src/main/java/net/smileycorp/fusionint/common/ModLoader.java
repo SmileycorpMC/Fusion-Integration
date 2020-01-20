@@ -5,22 +5,21 @@ import net.smileycorp.fusionint.common.tcon.TConRegistry;
 
 public class ModLoader {
 	
-	public static boolean embersLoaded;
-	public static boolean tconLoaded;
+	public static boolean useFluids;
 
 	public static void readMods() {
 		if (Loader.isModLoaded("embers")) {
-			embersLoaded = true;
+			useFluids = true;
 		}
 		if (Loader.isModLoaded("tconstruct")) {
-			tconLoaded = true;
-			TConRegistry.registerMaterials();
+			useFluids = true;
 		}
 		
 	}
 
 	public static void initMods() {
-		if (tconLoaded) {
+		if (Loader.isModLoaded("tconstruct")) {
+			TConRegistry.registerMaterials();
 			TConRegistry.registerSmeltery();
 		}
 		

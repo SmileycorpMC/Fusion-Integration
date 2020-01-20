@@ -10,15 +10,17 @@ import net.smileycorp.fusionint.common.ModDefinitions;
 
 public class ItemClumps extends Item {
 	
-	public String name;
+	final String name;
+	final int colour; 
 	
-	public static String[] types = {"small", "medium", "large"};
+	static String[] types = {"small", "medium", "large"};
 
-	public ItemClumps(String name) {
+	public ItemClumps(String name, int colour) {
 		this.setCreativeTab(ContentCategories.CreativeTab.GENERAL.vanillaTab);
 		this.setRegistryName(ModDefinitions.getResource(name+"_Chunk"));
 		this.setUnlocalizedName(ModDefinitions.getName(name+"_Chunk"));
 		this.name=name;
+		this.colour=colour;
 	}
 	
 	@Override
@@ -44,5 +46,8 @@ public class ItemClumps extends Item {
 		result += I18n.translateToLocal("localisation.chunk").trim();
 		return result;
 	}
-
+	
+	public int getColour() {
+		return colour;
+	}
 }

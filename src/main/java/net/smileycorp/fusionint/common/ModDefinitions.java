@@ -7,6 +7,9 @@ public class ModDefinitions {
 	public static final String NAME = "Fusion Intergrations";
 	public static final String VESRION = "alpha 1.1a";
 	
+	public static final String location = "net.smileycorp.fusionint.";
+	public static final String client = location + "client.ClientProxy";
+	
 	public static String getName(String name) {
 		return ModDefinitions.MODID + "." + name.replace("_", "");
 	}

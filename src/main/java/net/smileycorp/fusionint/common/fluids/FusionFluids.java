@@ -15,6 +15,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.IFluidBlock;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -49,25 +50,27 @@ public class FusionFluids {
 		
 		@SubscribeEvent
 		public static void registerFluids(RegistryEvent.Register<Block> event) {
-			for (Fluid fluid : MOLTEN_FLUIDS) {
-			    FluidRegistry.registerFluid(fluid);
-			    FluidRegistry.addBucketForFluid(fluid);
-			    ModDefinitions.log("Registered fluid " +fluid.getName());
-			}
+			if (Loader.isModLoaded("simpleores")) {
+				for (Fluid fluid : MOLTEN_FLUIDS) {
+					FluidRegistry.registerFluid(fluid);
+					FluidRegistry.addBucketForFluid(fluid);
+					ModDefinitions.log("Registered fluid " +fluid.getName());
+				}
 
-			ADAMANTIUM_BLOCK = new BlockFluidMolten(ADAMANTIUM, MapColor.GREEN);
-			event.getRegistry().register(ADAMANTIUM_BLOCK);
-			
-			MYTHRIL_BLOCK = new BlockFluidMolten(MYTHRIL, MapColor.BLUE);
-			event.getRegistry().register(MYTHRIL_BLOCK);
-			
-			SINISITE_BLOCK = new BlockFluidMolten(SINISITE, MapColor.LAPIS);
-			event.getRegistry().register(SINISITE_BLOCK);
-			
-			THYRIUM_BLOCK = new BlockFluidMolten(THYRIUM, MapColor.CYAN);
-			event.getRegistry().register(THYRIUM_BLOCK);
-			
-			
+				ADAMANTIUM_BLOCK = new BlockFluidMolten(ADAMANTIUM, MapColor.GREEN);
+				event.getRegistry().register(ADAMANTIUM_BLOCK);
+				
+				MYTHRIL_BLOCK = new BlockFluidMolten(MYTHRIL, MapColor.BLUE);
+				event.getRegistry().register(MYTHRIL_BLOCK);
+				
+				SINISITE_BLOCK = new BlockFluidMolten(SINISITE, MapColor.LAPIS);
+				event.getRegistry().register(SINISITE_BLOCK);
+				
+				THYRIUM_BLOCK = new BlockFluidMolten(THYRIUM, MapColor.CYAN);
+				event.getRegistry().register(THYRIUM_BLOCK);
+			} else {
+				ModDefinitions.log("Skipping fluid registry, Simple Ores not loaded.");
+			}
 		}
 		
 		@SubscribeEvent

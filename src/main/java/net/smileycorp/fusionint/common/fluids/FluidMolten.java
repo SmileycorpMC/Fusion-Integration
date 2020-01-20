@@ -11,7 +11,7 @@ public class FluidMolten extends Fluid {
 
 	public FluidMolten(String name, int temp, int colour, EnumRarity rarity, BlockFluidMolten block) {
 		super(name, ModDefinitions.getResource("blocks/molten_metal"), ModDefinitions.getResource("blocks/molten_metal_flow"), colour);
-		this.setUnlocalizedName(ModDefinitions.getName(name));
+		this.setUnlocalizedName("molten_"+name.replace("_", ""));
 		this.setTemperature(temp);
 		this.setRarity(rarity);
 		this.setDensity(2000);

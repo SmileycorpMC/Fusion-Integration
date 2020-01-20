@@ -3,6 +3,7 @@ package net.smileycorp.fusionint.common.fusion;
 import slimeknights.tconstruct.shared.TinkerCommons;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.Loader;
 import net.smileycorp.fusionint.common.ModLoader;
 import alexndr.plugins.Fusion.Content;
 import alexndr.plugins.Fusion.FusionFurnaceRecipes;
@@ -11,7 +12,7 @@ import alexndr.plugins.Fusion.FusionMaterial;
 public class FusionRecipes {
 
 	public static void addRecipes() {
-		if (ModLoader.tconLoaded) {
+		if (Loader.isModLoaded("tconstruct")) {
 			//manyullyn
 			FusionFurnaceRecipes.addSmelting(FusionMaterial.of("ingotCobalt", 1), FusionMaterial.of("ingotArdite", 1),
 					FusionMaterial.of("quartz", 1), new ItemStack(FusionContent.MANYULLYN, 1, 0), 10f);
